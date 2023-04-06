@@ -52,60 +52,96 @@
                 
                 <!-- Main Image -->
        
-                <h1> Image J and an Introduction to Image Analysis</h1>
+                <h1> 1. Fiji (Image J) and an Introduction to Image Analysis</h1>
                 <div style="margin-top:3%; text-align:justify;">                
+                <br>
+
+                  <h2> Learning Objectives</h2>
+                  <ol>
+                    <li>Install Fiji</li>
+                    <li>Begin exploring images with Fiji</li>
+                    <li>Understand the numerical nature of digital image content</li>
+                    </ol>
+                    <br>
                   <h2>Installation</h2>
-		  <p></p>
+		  
 Fiji is just ImageJ ("Fiji"). This is a "batteries included" version of ImageJ which includes a collection of key plugins installed from the start. </p>
       <p> Fiji can be downloaded <a href="https://fiji.sc/#"> here  </a>. </p>
   <p>Please download, extract the files and install Fiji to your User space (the Desktop is a suggested) rather than the "Program Files" or other system-wide directories. 
 </p>
-<p></p>
-
-
+<br>
 
 <h2> What is an image?</h2>
-<p></p>
 Digital images are composed of pixels. Each one of these is the visual representation of a numerical value.
 <p></p>
 <p><b>Exercise 1:</b></p>
 <ul>
   <li>Open Fiji</li>
   <li>Go to the search bar and type "Boats"</li>
-    <li>Alternatively follow File > Open Samples > Boats</li>
-  <li>You'll see a picture of some boats</li>
+  <ul>
+    <li><b>NB.</b> The search bar is a wonderful feature of Fiji. Functions can be found directly through the toolbar, but this is typically much more tedious. </li>
+    <li>You'll see in the Quick Search results that the alternative to running this shortcut would be to click File > Open Samples > Boats</li></ul>
+    <br>
+    <img class="img-responsive" src="docs/assets/Images/ImageJ/Page 1/Boats original.png" alt=""><br>
   <li>Hover your cursor over the different regions of the image and watch the values being displayed along the base of the toolbar. </li>
+  <br>
+  <img class="img-responsive" src="docs/assets/Images/ImageJ/Page 1/Toolbar - Boats.png" alt="">
+  <br>
   <li>This is information refers to the individual pixel you are over: xy coordinates and value</li>
+<br>
+  
+  <p float="left">
+    <img src="docs/assets/Images/ImageJ/Page 1/Face zoom snapshot.png" width="49%" />
+    <img src="docs/assets/Images/ImageJ/Page 1/Face zoom values excel.png" width="49%" /> 
+  </p><br>
 
-  <img class="img-responsive" src="docs/assests/Images/ImageJ/Page 1/Boats.png" alt=""><br>
 
+<li> The image frame also displays information about the file:</li>
+  <ul>
+    <li>Size in pixels</li>
+    <li>Bit-depth (8-bit)</li>
+    <li>File size</li>
+  </ul></ul>
   <img class="img-responsive" src="docs/assets/Images/ImageJ/Page 1/Boats.png" alt=""><br>
-  <!-- ![Boats image](/docs/assets/Images/ImageJ/Page 1/Boats.png) -->
+  <br>
 
+<h2>What is bit depth?</h2>
+<br>
+Bit depth is the range in which the values in your image exist.
 <p></p>
-
-The image frame also displays information about the file:
-<li>Size in pixels</li>
-<li>Bit-depth (8-bit)</li>
-<li>File size</li>
+An 8-bit image has 2<sup>8</sup> possible values for each pixel. This is a range from 0-255.
+<br>
+<ul>
+  <li>It is important to think about bit depth when capturing and analysing images. </li>
+  <li>You want to capture as much of the variation in intensities across your subject as possible. </li>
+  <li>This means having your brightest pixels close to (but not at) the limit of your range (here 255). </li>
 </ul>
+<br>
+<b>Exercise 2 - exploring the histogram: </b>
+<p></p>
+<ul>
+  <li>Type "Histogram" into the search bar</li>
+  <ul>
+    <li>Explore the hostogram with your cursor</li>
+    <ul>
+      <li>Pixel values and counts</li>
+      <li>Try switching the y-axis to a log scale. This can be very useful is you have few regions of differing signal. </li>
+    </ul>
+  </ul>
+  <br>
+  <p float="left">
+    <img src="docs/assets/Images/ImageJ/Page 1/hitogram.png" width="49%" />
+    <img src="docs/assets/Images/ImageJ/Page 1/hitogram -log.png" width="49%" /> 
+  </p><br>
 
-What is bit depth?
-<li>The range in which the values in your image exist</li>
-<li>An 8-bit image as 2^8 possible values for each pixel. This is a range from 0-255.</li>
 
-It is important to think about bit depth when capturing and analysing images. 
-You want to capture as much of the variation in intensities across your subject as possible. 
-This means having your brightest pixels close to (but not at) the limit of your range (here 255). 
 
-<p><b>Exercise 2 - exploring the histogram: </b></p>
-
-<p><b>Look at some under and over-exposed images</b></p>
-<p><b>Play with B&C and LUTs</b></p>
-<p><b>Try saving altered LUT image and opening in Photo viewer or something. It doesn't work - not RGB. Correct and repeat. </b></p>
-<p><b>Open stacks and RGB images, see the differences</b></p>
-<p><b>Discuss different file formats</b></p>
-<p><b>Multidimensional images, navigation and information</b></p>
+  <p><b>Look at some under and over-exposed images</b></p>
+  <p><b>Play with B&C and LUTs</b></p>
+  <p><b>Try saving altered LUT image and opening in Photo viewer or something. It doesn't work - not RGB. Correct and repeat. </b></p>
+  <p><b>Open stacks and RGB images, see the differences</b></p>
+  <p><b>Discuss different file formats</b></p>
+  <p><b>Multidimensional images, navigation and information</b></p>
 
 
 
@@ -130,8 +166,6 @@ This means having your brightest pixels close to (but not at) the limit of your 
     </div>
     <!-- /.container -->
     
-    <!-- Other people may like it too! -->
-    <a style="color:#b5bec9;font-size:0.8em; float:right;" href="https://github.com/mavroudisv/plain-academic">Plain Academic</a> 
     
 </body>
 
