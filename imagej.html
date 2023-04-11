@@ -79,7 +79,7 @@ Digital images are composed of pixels. Each one of these is the visual represent
   <li>Open Fiji</li>
   <li>Go to the search bar and type "Boats"</li>
   <ul>
-    <li><b>NB.</b> The search bar is a wonderful feature of Fiji. Functions can be found directly through the toolbar, but this is typically much more tedious. </li>
+    <li><b><mark>Tip.</b> The search bar is a wonderful feature of Fiji. Functions can be found directly through the toolbar, but this is typically much more tedious. </mark></li>
     <li>You'll see in the Quick Search results that the alternative to running this shortcut would be to click File > Open Samples > Boats</li></ul>
     <br>
     <img class="img-responsive" src="docs/assets/Images/ImageJ/Page 1/Boats original.png" alt=""><br>
@@ -134,15 +134,151 @@ An 8-bit image has 2<sup>8</sup> possible values for each pixel. This is a range
     <img src="docs/assets/Images/ImageJ/Page 1/hitogram -log.png" width="49%" /> 
   </p><br>
 
+  Now that you're familiar with looking at pixel values, let's have a look at some biological images. 
+<p></p>
+<ul></ul>
+  <li>Download all three sample images from <a href="https://github.com/image-analysis-workshop/image-analysis-workshop.github.io/tree/master/docs/assets/Images/ImageJ/Page%201/Histogram%20Exercise">here</a></li>
+  <li>You can simply drag and drop images into Fiji to open them</li>
+  <br>
+  <p><mark><b>Tip:</b> the toolbar can easily become buried below a multitude of windows. Just select an image and press Enter to bring it to the top again</mark></p>
+  <li><u>Use the histogram to decide which image is the best and why</li></u>
+</ul></ul>
+<p></p><br>
+<br>
 
+<h2>Modifying image appearance</h2>
+  <h3>Brightness & Contrast</h3>
+  <ul>
+    <li>Select the Brightness & Contract tool</li>
+    <ul>
+      <li>Searchbar or Image > Adjust > Brightness/Contrast</li>
+    </ul>
+    <li>Try adjusting the Minimum and Maximum settings, see how this is adjusting the histogram displayed above</li>
+    <li>You are adjusting how the values in the image are displayed across the 256 value range (8bit) of the image</li>
+    <li>This can be very useful for making faint signal easier to see, or hiding background signal</li>
+    <li>Currently only way the values are being <b>displayed</b> is altered</li>
+    <li>Press "Apply", and the actual values in the image are altered</li>
+    <p><mark><b>Tip:</b> Be extremely careful when "Applying" brightness changes, especially when perforing quantitative analysis. Always keep raw copies of your images</mark></p>
+  </ul>
+  <br>
 
-  <p><b>Look at some under and over-exposed images</b></p>
-  <p><b>Play with B&C and LUTs</b></p>
-  <p><b>Try saving altered LUT image and opening in Photo viewer or something. It doesn't work - not RGB. Correct and repeat. </b></p>
-  <p><b>Open stacks and RGB images, see the differences</b></p>
-  <p><b>Discuss different file formats</b></p>
-  <p><b>Multidimensional images, navigation and information</b></p>
+  <p><b>Exercise 3: Try this out and look at your image histograms when the Brightness & Contrast changes are applied</b></p>
+  <br>
+  <img class="img-responsive" src="docs/assets/Images/ImageJ/Page 1/Histograms before and after B&C changes.png" alt=""><br>
 
+  <h3>Brightness & Contrast</h3>
+  <ul>
+    <li>Despite representing colour signal, fluorescence images are always greyscale and have no inherent colour value</li>
+    <li>Colour pallets can be applied to the values in images to:  </li>
+      <ul>
+        <li>Make them look nice</li>
+        <li>Highlight features of interest</li>
+        <li>Diplay multiple overlayed images </li>
+      </ul></ul>
+    <li>Colour is controlled using the "Lookup Table" (LUT) options
+      <ul><li>Image > Lookup Tables</li> </ul>
+      <br>
+    <p><b>Exercise 4: Exploring LUTs</b></p>
+      <ul>
+        <li>Try out some lookup tables and save your new colourful image</li>
+        <li>Try opening it in another program e.g. Photos (in Windows) or $$$what's the basic one in Apple??</li>
+        <li><u>What's going on and why?!?</li></u>
+        </ul>
+      
+        <br>
+        <img class="img-responsive" src="docs/assets/Images/ImageJ/Page 1/LUT exercise.png" alt=""><br>
+        <br>
+      
+<h2>Image Files</h2>
+<br>
+The way your image data is saved can greatly alter how it appears and the analysis which can be performed on it. 
+<br>
+<ul>
+  <li>In the previous example a <b>single value</b> could be seen for each pixel in the toolbar when hovering a cursor over it</li>
+  <li>This is because it is a greyscale image. The colour assigned to it in Fiji will typically not be recognised in other software</li>
+  <li>In the previous example a single value could be seen for each pixel in the toolbar when hovering a cursor over it</li>
+  <li>The alternative format which is used for colour images is <b>RGB</b></li>
+</ul>
+  <br>
+<p><b>Exercise 4: Converting to RGB</b></p>
+<ul>
+  <li>Convert your coloured imaged to become an "RGB Color" Image</li>
+  <ul><li>Image > Type > RGB Colour</li></ul>
+  <li>Hover your cursor over the image again and look at the corresponding values displayed in the toolbar</li>
+  <li>You now have three values for each pixel</li>
+  <ul><li>These values reflect the red, green and blue content of each pixel</li></ul>
+
+  <p><mark><b>Tip:</b> In addition to presering the colour of an image </mark></p>
+  <br>
+  <img class="img-responsive" src="docs/assets/Images/ImageJ/Page 1/Toolbar for RGB image.png"alt=""><br>
+  <li>Try saving this image again and opening it in another program as before</li>
+  <li>You should find the colour is preserved</li>
+  </ul>
+  <br>
+<p><b>Exercise 5: Stack images</b></p>
+<ul>
+  <li>Open the pre-installed sample image "FluorescentCells.tif"</li>
+  <ul><li>Search in the toolbar or File > Open Samples > FluorescentCells</li></ul>
+  <li>Hover over the image again and look ar the values</li>
+  <li>This image has multiple colours, but is not RGB</li>
+  <li>It is a <b>stack</b> image (aka <b>composite</b> image), showing multiple greyscale images together</li>
+  <li>Scroll through these different images using the "C" (channel") slider on the bottom and note the change in information (and colour) in the display above the image</li>
+  <li>As with a single greyscale image, these images can be manipulated separately e.g. Brightness & Contrast alterations</li>
+  <li>Stacks can be separated into individual images
+    <ul><li>Image > Stacks > Stack to Images</li></ul>
+  <li>Or individual images can be combined into new stacks </li>
+  <ul><li>Image > Color > Merge Channels</li></ul>
+  <li>This is a very effective way of storing multi-dimensional image data</li>
+    
+  <p><mark><b>Note</b>: This is another file format which will confuse many programs, which will only diplay the first greyscale image in a stack, not their colurful combination</mark></p>
+  <br>
+  <li>Now open the pre-installed sample image "Neuron (5 Channels)"</li>
+  <li>You'll notice that this is a multidimensional stack, but is showing each image separately</li>
+  <li>Open the Channels Tool</li>
+  <ul><li>Image > Color > Channels Tool</li></ul>
+  <li>You can alter how the stack is displayed using the drop down menu, and turn channels on and off</li>
+  <br>
+  <img class="img-responsive" src="docs/assets/Images/ImageJ/Page 1/Neuron with channel tool.png"alt=""><br>
+
+</ul>
+
+<br>
+<p><b>Exercise 6: Metadata</b></p>
+<ul>
+  <li>Metadata is all the extra information recorded about you image</li>
+  <li>View this for an open image by typing <b>"Ctrl+I"</b>  </li>
+  <li>Have a look at the metadata for the Neuron image</li>
+  <li>Note that the dimensions of this image are displayed above it both in um and in pixels (in brackets). This is because the scale of the image has been recorded automatically in the image metadata, then reapplied upon opening the image</li>
+  <br>
+  <img class="img-responsive" src="docs/assets/Images/ImageJ/Page 1/Neuron with scale.png"alt=""><br>
+
+  <li>Metadata is extremely useful when processing and analysing images</li>
+  <li><mark>Note: Metadata can be easily lost when re-saving images. This is another reason to be sure to preserve a raw copy of your images.  </mark></li>
+</ul>
+<br>
+
+<h3>File Formats</h3>
+<br>
+<p>A large and growing number of image file formats exist, with the newest being a range of proprietary file e.g. lif, lof, nd2 etc.</p>
+<p>It is important to carefully consider your choice of file format. As this can have a significant impact on how your image can be used. </p>
+<p>For more information on the topic see <a href="https://bioimagebook.github.io/chapters/1-concepts/6-files/files.html">the relevant chapter of Pete Bankhead's Bioimage book</a> where he covers the topic very clearly in much more detail. </p>
+
+<p><b>Opening files:</b></p>
+<ul>
+  <li>Fiji comes with the Bioformats plugin installed by default</li>
+  <li>This is able to open >150 different image file types</li>
+  <li>A vital first step for malking analytical pipelies widely applicable</li></ul>
+<br>
+<p><b>Saving files</b></p>
+</ul>
+  <li>File format of choice will depend on how an image will be used</li>
+  <li>Some file types (e.g.Jpeg) will compress the image, resulting in a more compact file</li>
+  <ul><li>Good for Whatsapp sharing, not good for analysis</li></ul>
+  <li>Generally <b>Tiff</b> is a safe way of saving images since this does not compress the image</li>
+  <br><br>
+  <img class="img-responsive" src="docs/assets/Images/ImageJ/Page 1/File formats PB.png"alt="">
+  Table copied from <a>https://bioimagebook.github.io/chapters/1-concepts/6-files/files.html</a>
+  <br>
 
 
 
