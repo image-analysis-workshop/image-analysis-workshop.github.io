@@ -58,37 +58,144 @@
                 <h1> 2. Making Figures</h1>
                 <div style="margin-top:3%; text-align:justify;">                
                 <br>
-                <a href="../imagej.html">Home</a> | <a href="ImageJ_pg1.html"> << Previous Page</a> 
+                <a href="../imagej.html">Home</a> | <a href="ImageJ_pg1.html"> << Previous Page</a> | <a href="ImageJ_pg3.html"> Next Page >></a> 
                 <br>
 
                   <h2> Learning Objectives</h2>
                   <ol>
+                    <li>Multidimensionality of images and how to work with this</li>
                     <li>Begin exploring the ROI manager</li>
                     <li>Understand "overlays"</li>
                     <li>Adding scale bars</li>
                     <li>FigureJ</li>
                     </ol>
                     <br>
+
+                  <h2>Multidimensional images</h2>
+                  <br>
+                  <p>The basic dimensions of an image are X and Y, however bioimage data can be far more complex. </p>
+                  <p>We've viewed stack images, these have an extra dimension: <b>channels</b> (aka "slices"). </p>
+                  <p>Other dimensions:</p>
+                  <ul>
+                  <li><b>Z</b>-positions moving vertically through the sample, making the image 3D </li>
+                  <li><b>Time</b>, e.g. for timelapse videos</li>
+                  <li>Also <b>XY position of your stage</b> i.e. where on your sample an image is taken. Automated runs of imaging may have multiple locations in the same file </li>
+                  </ul>
+                  <p>This can make files very large, quite complex and difficult to summarise in 2D!</p>
+                  <br>
+
+                  <p><b>Exercise 1:</b> Processing multidimensional images</p>
+                  <ul>
+                    <li>Open "Mitosis (5D stack)" from the built in images </li>
+                    <ul><li>Go on, use the search bar!</li></ul>
+                    <li>This is clearly a more complex image</li>
+                    <li>This is referred to as a "hyperstack"</li>
+                    <br><ul>
+                      <li>Can you see how many images there are?</li>
+                      <li>What are the different dimensions involved?</li>
+                      <li>How might we begin to simplify this image for visualisation?</li></ul>
+                    <br>
+                    Project the signal across the z-planes
+                    <li>For once it is worth following the tab to see some related options in Image > Stacks</li>
+                    <li>Many of these functions are relevant and useful to know about</li>
+                    <li>Select Z-project and Maximum Intensity</li>
+                    <li>Watch the video again. Isn't that better!?</li>
+                    <li>Set the brightness and contrast for the image and apply the changes when you're ready</li>
+                    <p></p>
+                    <p><mark><b>Note:</b> Until you "Apply" changes to brightness these can still change </mark></p>
+                    <p><mark><b>Note:</b> Always be careful not to override your original raw image. If in doubt, duplicate (Ctrl+Shift+D) the original and close it</mark></p>
+                    <br></ul>
+                    I'm just interested in the point where the chromosomes begin to segregate, so only want the relevant frames (25-28) in my figure. 
+                    <br>
+                    <ul>
+                      <li>Frames can be trimmed by Duplicating (Ctrl+Shift+D) the image and selecting the frames you want</li>
+                    </ul><br>
+                    <img class="img-responsive" src="../docs/assets/Images/ImageJ/Page 2/Mitosis - max proj.png" alt=""><br>
+
+                  <br>
                   <h2>The ROI Manager</h2>
                   <br>
-                  When creating a figure from your images it is often important to be able to select only a portion of the image
+                  <p>I only want to see the chromosomes in my figure, so want to crop the image.</p>
+                  <p>Cropping and zooming are common steps in figure construction. </p>
+                  It is important that the size and position of the selected region are known and recorded.
                   <ul>
-                    <li>Cropping images</li>
-                    <li>Zooming images</li>
-                    <p></p>
+                    <li>Helps to preserve scales and sizes between different images</li>
+                    <li>Enables repeated selection of a region in different images</li></ul>
+
+                  <p>This is one of the many uses of the <b>ROI (region of interest) Manager</b></p>
+
+                  <br>
+                  <p><b>Exercise 1: Getting started with the ROI Manager</b></p>
                   <ul>
-                  It is important that the size and position of the selected region are known and recorded
-                  <ul><li>This can help to preserve scales and sizes between different images</li></ul>
+                    <li>First, open the ROI manager</li>
+                    <ul>
+                      <li>You know what to do, use that search bar!</li>
+                    </ul>
+                    <li>regions can be selected using a variety of tools in the toolbar</li><br>
+                    <img class="img-responsive" src="../docs/assets/Images/ImageJ/Page 2/ROI selection tools.png" alt=""><br>
+                    <li>Choose the rectangle tool and select your region of interest</li>
+                    <p><mark><b>Note: </b>To zoom in and out you can use "+" and "-" keys</mark></p>
+                    <ul>
+                      <li>Look through your video. Does everything stay in frame? If not, adjust the roi</li>                  
+                    </ul>
+                    <li>When you're happ with the ROI add it to the ROI manager by pressing "Add"</li>
+                    <ul><li>See that you can now select a different region in the image and then use the ROI recorded to re-select the original region</li></ul>
+                    <li>Let's rename the ROI "Figure 1"</li>
+                    <br>
+                    <img class="img-responsive" src="../docs/assets/Images/ImageJ/Page 2/ROI Manager 1.png" alt=""><br>
+                    <li>Whole libraries of ROIs can be recorded, saved and revisited in this way</li>
+                    <li>Crop the image by selectiong this ROI and Duplicating the image</li>
+                    <li>To make this a colour image we need to convert it to RGB (Image > Type > RGB color)</li>
+                    <ul><li>Keep the 4 time frames in the image for now</li></ul>
+                    <li>We can only show one frame at a time, so let's split the frames so they can be shown side by side</li>
+                    <ul><li>Image > Stacks > Stack to Images</li></ul>
+                    <li>You'll now have merged colour images of the 4 frames depicting chromosome segregation</li>
+                  </ul>
+                  <br>
+                  <h2>Scale bars</h2>
+                  <br>
+                  <ul>
+                    <li>It's vital to be able to provide the scale of your image in a figure</li>
+                    <li>This is calculated based on a combination of information about the objective and camera used to capture the image</li>
+                    <li>Fortunately this information is recognised in this image's metadata, as the scale of the image can be seen in the information above it</li>
+                    <li>Scale can also be manually set using "Set Scale"</li>
+                    <p><mark><b>Note: </b>It's not usnusual to lose metadata during image processing steps, requiring you to consult the raw image to acces the scale information and re-apply it using Set Scale.</mark></p>
+                    <li>Put a scale bar on the first of our images (note they were automatically numbered when we split the stack) using "Scale Bar" </li>
+                    <li>Adjust the setting to make it look good</li>
+                    <li>This scale bar is currently an <b>"Overlay"</b>. This is not sufficient for it to be viewed in a figure.</li>
+                    <li>Take a look at Overlay options in Image > Overlay</li>
+                    <ul>
+                      <li>There are lots of types of overlays you can add, and things you can do with them</li>
+                      <li>Try "Hide Overlay" and "Show Overlay" </li>                      
+                    </ul>
+                    <li>As an overlay, te scale bar is currently sitting on the image as a separate feature</li>
+                    <li>Stamp it on by selecting Image > Overlay > Flatten</li>
+                    <li>This image could now be used outside of ImageJ for a figure</li>
+                    <li><b>Save your 4 cropped RGB images, including the flattened image containing a scale bar, and the ROI Manager (this is saved from within the manager using More > Save)</b></li>
+                    <br>
+                  </ul>
+                  <img class="img-responsive" src="../docs/assets/Images/ImageJ/Page 2/Mitosis - Scale bar.png" alt=""><br>
+                  <br>
+                    <li>Images can now be organised into figure panels using your software of choice</li>
+                    <li>MS Powerpoint is a quick tool we can use to do this</li>
+                    <li>Many alternatives exist and are better suited to professional publication-worth figure construction e.g Adobe InDesign (great but expensive) and <a href ="https://www.gimp.org/"">GIMP</a> (free!)</li>
+                    <br>
+                  <img class="img-responsive" src="../docs/assets/Images/ImageJ/Page 2/Mitosis - 4 panels.png" alt=""><br>
 
-                  <p>This is one of the many uses of the ROI (region of interest) Manager</p>
+                  </ul>
 
+
+
+                  </ul>
+
+                  
 
 
                   </ul>
 
                   <br>
                   <br>
-                  <a href="../imagej.html">Home</a> | <a href="ImageJ_pg1.html"> << Previous Page</a> 
+                  <a href="../imagej.html">Home</a> | <a href="ImageJ_pg1.html"> << Previous Page</a> | <a href="ImageJ_pg3.html"> Next Page >></a> 
 
 
 
