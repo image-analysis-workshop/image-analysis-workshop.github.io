@@ -58,13 +58,193 @@
                 <h1> 3. Macro recording</h1>
                 <div style="margin-top:3%; text-align:justify;">                
                 <br>
-                <a href="../imagej.html">Home</a> | <a href="ImageJ_pg1.html"> << Previous Page</a> | <a href="ImageJ_pg3.html"> Next Page >></a> 
+                <a href="../imagej.html">Home</a> | <a href="ImageJ_pg2.html"> << Previous Page</a> | <a href="ImageJ_pg4.html"> Next Page >></a> 
                 <br>
+                <h2> Learning Objectives</h2>
+                  <ol>
+                    <li>Recording with the Recorder tool</li>
+                    <li>Building macros using the Recorder output</li>
+                    <li>Beginning to code in ImageJ</li>
+                    </ol>
+                    <br>
+
+                <h2>The Recorder Tool</h2>
+                <p>Most processes in ImageJ can be recorded, enabling the fast and simple construction of code to automate analysis or image processing pipelines.</p>
+                <p>Let's try automating some of the processes we've already covered as an example.</p>
+                <br>
+                <p><b>Exercise 1: </b>Using the Recorder</p>
+                <ul>
+                    <li>Open the Recorder</li>
+                    <ul><li>Plugins > Macros > Record</li></ul>
+                    <li>Open the Mitosis image we used previously in our figure ("Mitosis (5D stack)")</li>
+                    <li>See that some text has appeared in the recorder. This is code documenting your actions. This is code documenting your actions. </li>
+                    <li>By defauly the ImageJ Macro lannguage (simply called "Macro" here) is used. But the recorder will also produce records in other languages</li>
+                    <ul><li>Have a look in the "Record:" drop down menu</li></ul>
+                    <li>You can create a script directly from the Recorder by clicking "Create". This will be given the title present in the "Name:" text box</li>
+                    <ul><li>You can also open new scripts by File > New > Script</li>
+                        <mark><b>Note: </b>It is possible to <u>write</u> code in ImageJ using even more languages. For your code to work, <u>make sure the correct language is selected</u> in the "Language" tab. For our current purposes we'll stick with ImageJ Macro</mark>
+                    </ul>
+                    </ul>
+                    <img src="../docs/assets/Images/ImageJ/Page 3/Recorder.png"> <br>
+                    <br><img src="../docs/assets/Images/ImageJ/Page 3/Recorder Script 1.png"> 
+                    <br><p></p>
+                <ul>
+                    <li>Scripts can be run by clicking "Run" or pressing <b>Ctrl+R</b></li>
+                    <ul>
+                        <li>Close the Mitosis image and try running the code you've recorded</li>
+                        <li>This should reopen your image</li>
+                </ul></ul>
+                <mark><b>Note: </b>Individual images can be closed using the <b>Ctrl+W</b> shortcut, and <b>Ctrl+Shift+W</b> can be used to close all open image windows</mark>
+                        <br>
+                    
                 
+                <br><br>
+                <p><b>Exercise 2: </b>Building a script with the Recorder</p>
+                <p>Here we're going to try automate the construction of our figure from Page 2. </p>
+                <p>The only two parts of the process which required manual involvement were the adjustment of the image brightness and the selection of an ROI to crop the image. </p>
+                <p>It is possible to build manual intervention steps into a macro, but for simplicity we'll skip that step for now. </p>
+                <p>These were the steps. You can type the underlined commands into the search bar to find them again. Try to build a script to replicate this process:</p>
+                <ol>
+                    <li>Open <u>Mitosis (5D stack)</u></li>
+                    <li><u>Z Project...</u></li>
+                    <li><u>Duplicate</u> frames 25-28</li>
+                    <li>Convert image type to <u>RGB Color</u></li>
+                    <li><u>Stack to Images</u></li>
+                    <li>Select the first frame from the separated stack</li>
+                    <ul><li>Select the window with the cursor, or by Window > MAX_mitosis-1-0001</li></ul>
+                    <li>Add <u>Scale bar</u></li>
+                    <li><u>Flatten</u> the scale bar onto the image</li>
+                </ol><br>
+                <p>Your code should look something like this:</p>
+                <p><code>run("Mitosis (5D stack)");
+                    <p>run("Z Project...", "projection=[Max Intensity] all");
+                    <p>run("Duplicate...", "duplicate frames=25-28");
+                    <p>run("RGB Color", "frames");
+                    <p>run("Stack to Images");
+                    <p>selectWindow("MAX_mitosis-1-0001");
+                    <p>run("Scale Bar...", "width=5 height=7 thickness=2 font=14 color=White background=None location=[Lower Right] horizontal bold hide overlay");
+                    <p>run("Flatten");</code></p><br>
+                
+                <p>Being a human, it can be difficult to keep track of what all the steps of a program are for. Particularly if they have been written by someone else! </p>
+                <p>It's good practice to write <b>comments</b> throughout the code, by preceedng text with <code>//</code> to annotate it. 
+                    <p>You'll thank yourself later. E.g.</p>
+                <p><code>//This script will open the stock image "mitosis (5D stack)" and process it to make images for a figure
+                    <p>
+                    <p>run("Mitosis (5D stack)"); //Open mitosis image
+                    <p>run("Z Project...", "projection=[Max Intensity] all");   //Maximum intensity projection to remove z-dimension
+                    <p>run("Duplicate...", "duplicate frames=25-28");   //Duplicate only frames 25-28 of the image
+                    <p>run("RGB Color", "frames");  //Convert image to RGB
+                    <p>run("Stack to Images");  //Separate stack to individual RGB images for each timeframe
+                    <p>selectWindow("MAX_mitosis-1-0001");  //Select the first image separated from the stack
+                    <p>run("Scale Bar...", "width=5 height=7 thickness=2 font=14 color=White background=None location=[Lower Right] horizontal bold hide overlay"); //Add scale bar
+                    <p>run("Flatten");  //Stamp scale bar on image</code></p><br>
+                <p><mark><b>Note: </b>You can also select a block of text and press Ctrl+/ to comment or remove comment status. This is very useful if you want to temporarily remove a step in your pipeline</mark></p>
+                <br>
+                <p>The script is working, but there are loads of other windows still open. This is messy and confusing. </p>
+                <p>When working manually you can close individual windows with the shotcut <b>Ctrl+W</b> or close all open windows with <b>Ctrl+Shift+W</b>.</p>
+                <p>To tidy up our script we can close the unwanted windows by adding <code>close("mitosis.tif") ;close("MAX_mitosis.tif") ;close("MAX_mitosis-1-0001") ; //close unwanted images</code></p>
+                <mark><b>Note:</b> The semicolon can also be used to separate lines of code which are actually written on the same line, as with this script to close the unwanted images. </mark>
+                <br><br>
+
+
+                <h2>Let's get coding!</h2>
+                <br>Congratulations you've just written a program in ImageJ :)
+                <p>Easy isn't it?</p>
+                <p>Before going any further let's think about the basics of what is in your script:</p>
+                <ul>
+                    <li>There are <b>functions</b> e.g. "run" or "selectWindow"</li>
+                    <li>And there are <b>commands</b> between brackets and quotation marks, providing details of that function</li>
+                    <ul>
+                        <li>Loads of functions exist. They will pop up in the script window as you begin typing and provide helpful guidance</li>
+                        <li>A library of built in functions also exists: <a href="https://imagej.nih.gov/ij/developer/macro/functions.html">https://imagej.nih.gov/ij/developer/macro/functions.html</a></li>
+                        
+                    </ul>
+                    <li>Finally, and importantly, there is a <b>semicolon (;)</b>. This defines the end of a line and while easy to leave out, can cause a lot of issues in its absence. </li>
+                </ul>
+                <br>
+                <p>Generally ImageJ deals with thee main data types:</p>
+                <ul>
+                    <li><b>Numbers</b></li>
+                    <ul><li>Can do maths with these</li></ul>
+                    <li><b>Strings </b></li>
+                    <ul><li>Defined between quotation marks ""</li>
+                        <li>These can be text or numeric, but are not treated like numbers and you can't do maths on them</li>
+                        <li><mark><b>Note: </b>The commands being used in our script were in quotation marks. These are strings!</mark></li>
+                    </ul>
+                    <li><b>Arrays</b></li>
+                    <ul><li>Lists of strings or numbers (or both)</li>
+                        <li>We'll think about these more later</li></ul>
+                </ul>
+                <br>
+                <h3>Playing with strings</h3>
+                <br>
+                <ul>
+                    <li>Here we will write a string, which as well as a useful exercise, is a programming right of passage </li>
+                    <li>Open a new script (we'll keep working on the previous one in a minute)</li>
+                    <li>Type <code>"Hello World!";</code> into the script editor and run</li>
+                    <li>This phrase will be displayed in the Log window (sometimes this becomes buried and needs to be found via Window > Log)</li>
+                    <br>
+                    <li>You may often find it necessary to <b>combine strings</b>, this can be acheived by using <code>+</code>, e.g. <code>"Hello" + "World!";</code></li>
+                    <ul><li>This can be particularly useful when editing the strings which form commands within functions</li></ul>
+                    <br>
+                    <li>Information can also be stored as a <b>variable</b> for later use</li>
+                    <li>Here we provide an arbitrary reference name which can be e.g. </li>
+                    <p><code>a="Hello";
+                    <p>b=" World!";
+                    <p>c=a+b;
+                    <p>print(c);</code></p>
+                    <br><img src="../docs/assets/Images/ImageJ/Page 3/Hello World.png"> <br>
+                </ul><br>
+                <p><mark><b>Note: </b>Once assigned to a variable, strings and numbers need to be printed out to view, using <code>print()</code></mark></p>
+                    <br><br>
+                <p><b>Exercise 4: </b>Putting string to work</p>
+                <ul>
+                    <li>Return to your image processing script</li>
+                    <li>This is getting good, but currently we still need to save all the images at the end</li>
+                    <li>An alternative would be to set a directory to save into</li>
+                    <li>This can be done using <code>getDirectory</code>. Type it into the script and look at the options which pop up</li>
+                    <li>Variants of this function will provide the adress of specific directories used by ImageJ, apart from <code>getDirectory(string)</code></li>
+                    <li>This allows the user to provide an address, and the string inside is simply a title given to the file browser opened</li>
+                    <li>Test it on its own in a new script e.g. <code>getDirectory("Select a directory");</code></li>
+                    <li>To make use of this function we need to record the address of the directory selected e.g. <code>dir=getDirectory("Select a directory");</code> </li>
+                    <li>Try this out and use <code>print(dir);</code> to check it's worked</li>
+                </ul>
+                <br><img src="../docs/assets/Images/ImageJ/Page 3/getdir script.png"> <br>
+                <br><img src="../docs/assets/Images/ImageJ/Page 3/getdir log.png"> <br>
+                <br>
+                <li>Images can be saved as tiffs using <code>saveAs("tiff", path);</code>, where "path" is a string of the address</li>
+                <li>Add the code to set a directory to the beginning of the mitotic image processing script</li>
+                <li>Use the variable "dir" to set the path the images will be saved to</li>
+                <ul>
+                    <li>You will need to select each image in turn</li>
+                    <li>Then run the <code>saveAs</code> function described, combining <code>dir</code> to a filename of your choosing which must end ".tif" e.g. <code>saveAs("tiff", </code></li>
+                    <br>
+                    <li>Try to work out how to do this on your own. If you're confused an need a hand look <a href="../docs/assets/Help pages/ImageJ/Page 3/Help page 1.html">here</a> for some help</li>
+                </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    
+                
+            
+
+
+
+
 
                   <br>
                   <br>
-                  <a href="../imagej.html">Home</a> | <a href="ImageJ_pg1.html"> << Previous Page</a> | <a href="ImageJ_pg3.html"> Next Page >></a> 
+                  <a href="../imagej.html">Home</a> | <a href="ImageJ_pg2.html"> << Previous Page</a> | <a href="ImageJ_pg4.html"> Next Page >></a> 
 
 
 

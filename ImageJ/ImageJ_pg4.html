@@ -76,9 +76,91 @@
                     <li>Labelmap images</li>
                     <li>Labelmap analysis</li>
                   </ul>
-                  
+                  <br>
+                  <h2>Thesholding</h2>
+                  <br>
+                  <p>A key step in analysing images is the establishment of which pixels are part of something you're interested, and which are not. </p>
+                  <p>The simplest way to do this is by thresholding. </p>
+                  <p>This basically works on the principle that regions of interest will have higher fluorescence values.</p>
 
+                  <b>Exercise 1: </b>Thresholding
+                  <ul>
+                    <li>Open the sample image "Blobs" using the search tool</li>
+                    <li>Open the Threshold... tool</li>
+                        <ul><li>Image > Adjust > Theshold</li></ul>
+                    <li>This image does not have a Dark Background, so deselect this option</li>
+                    <li>Manually adjust the threshold, making your desired signal appear red </li>
+                    <li>Click "Apply"</li>
+                    <li>This has created a binary mask of the thresholded regions</li>
+                    <ul>
+                        <li>Hover your cursor over the different areas of the image</li>
+                        <li>Only two vales now exist, 0 and 255 i.e. yes (this is interesting) and no (this is not)</li>
+                    </ul>
+                </ul>
+                <br>
+                <p float="left">
+                  <img src="../docs/assets/Images/ImageJ/Page 3/Threshold tool.png" width="32%" />
+                  <img src="../docs/assets/Images/ImageJ/Page 3/Blobs threshold on.png" width="32%" />
+                  <img src="../docs/assets/Images/ImageJ/Page 3/Blobs binary.png" width="32%" /> 
+                </p><br>
+                <ul>
+                    <li>Thresholding can be performed automatically using a range of different algorithms (you can see these in the "Treshold" tool menu - the default is "Default")</li>
+                    <li>Many of these exist</li>
+                    <li>To help decide which is the most effective try "Auto Threshold" and for Method select "Try All" (don't forget to untick "White objects on a black background")</li>
+                </ul>
+                <br><img class="img-responsive" src="../docs/assets/Images/ImageJ/Page 3/Threshold Montage.jpg" alt=""><br>  
+                <ul></ul>                
 
+                <h2>Counting Objects</h2>
+                <br>
+                <p>Now that we have segmented our objects we'd like to know how many there are and what they're like</p>
+                <b>Exercise 2:</b> Counting
+                <ul>
+                    <li>If you don't have a binary image open, then set a threshold on Blobs and Apply it to make one</li>
+                    <li>Open Analyze Particles</li>
+                    <ul><li>Analyze > Analyze Particles...</li></ul>
+                    <li>This tool will allow you to count the segmented objects and filter based on size an circularity </li>
+                    <li>You can filter based on size and circularity</li>
+                    <li>Options exist to specify what output is wanted</li>
+                    <li>Experiment with this a bit</li>
+                    <mark><b>Note: </b>As with scale bars, if you decorate your image with the output here then it exists as an overlay and can be removed by "Remove Overlay". Alternativey, duplicate images before processing.</mark>
+                    <li>See that one of the "Show" options is for a "Count Mask". Try this and have a look at the output by hovering your curser over the objects</li>
+                    <ul><li>See that each object has a different value</li>
+                        <li>This type of image is often called a "Label map" and can be useful when you want to keep track of measurements relating to a given individual object</li>
+                    
+                    </ul>
+                </ul>
+                <br>
+                <p float="left">
+                  <img src="../docs/assets/Images/ImageJ/Page 3/Analyze Particles.png" width="48%" />
+                  <img src="../docs/assets/Images/ImageJ/Page 3/blobs- AP result.jpg" width="48%" />
+                </p><br>
+                <ul>
+                    <li>This has worked reasonably well, but it could be better</li>
+                    <li>There are crearly some blobs which are fused together</li>
+                    <li>Techniques exist to help separate these, known as Watershedding</li>
+                    <ul>
+                        <li>The metaphor involves thinking about the image as a topographic map, with the segmented signal being valleys which get deeper the further away they are from the edge</li>
+                        <li>Boundaries are drawn at the point where the valleys would fuse if they were filled with water</li>
+                        <li>Several variants of this algorithm exist </li>
+                    </ul></ul><ul>
+                <br><img class="img-responsive" src="../docs/assets/Images/ImageJ/Page 3/figure-watershed.png" alt="">
+                Image copied from <a>https://imagej.net/plugins/interactive-watershed</a>
+                <br>  <br>
+
+                    
+                    <li>Many standard binary image procesing tools can be found in Process > Binary </li>
+                    <ul>
+                        <li>These include a basic version of <b>"Watershed"</b>. Try it out</li>
+                        <li>That's a bit better. Other variants can be found and installed if you want to explore further e.g. <a>https://imagej.net/plugins/morpholibj</a>, and <a>"https://imagej.net/plugins/interactive-watershed"</a></li>
+                    </ul>                                   
+                </ul>
+                <br><p float="left">
+                      <img src="../docs/assets/Images/ImageJ/Page 3/blobs- basic watershed.jpg" width="48%" />
+                      <img src="../docs/assets/Images/ImageJ/Page 3/blobs- basic watershed AP result.jpg" width="48%" />
+                    </p><br>
+    
+                <b>Exercise 3:</b> 
 
 
                   <br>
