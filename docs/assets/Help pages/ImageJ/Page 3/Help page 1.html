@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+    Plain-Academic by Vasilios Mavroudis
+    Released under the Simplified BSD License/FreeBSD (2-clause) License.
+    https://github.com/mavroudisv/plain-academic
+-->
+
+<html lang="en">
+<head>
+
+  <title>Image Analyisis workshop. University of Exeter, St. Luke's Campus, University of Exeter 2-16 of May 2023</title>
+    <link rel="icon" type="image/x-icon" href="./favi.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+
+
+<p><code>//This script will open the stock image "mitosis (5D stack)" and process it to make images for a figure
+<p>
+<p>dir=getDirectory("Select a directory");//Set directory to save files into
+<p>
+<p>run("Mitosis (5D stack)") ;//Open mitosis image
+<p>run("Z Project...", "projection=[Max Intensity] all") ;//Maximum intensity projection to remove z-dimension
+<p>run("Duplicate...", "duplicate frames=25-28") ;//Duplicate only frames 25-28 of the image
+<p>run("RGB Color", "frames") ;//Convert image to RGB
+<p>run("Stack to Images") ;//Separate stack to individual RGB images for each timeframe
+<p>selectWindow("MAX_mitosis-1-0001") ;//Select the first image separated from the stack
+<p>run("Scale Bar...", "width=5 height=7 thickness=2 font=14 color=White background=None location=[Lower Right] horizontal bold hide overlay");//Add scale bar
+<p>run("Flatten") ;//Stamp scale bar on image
+<p>close("mitosis.tif") ;close("MAX_mitosis.tif") ;close("MAX_mitosis-1-0001") ; //close unwanted images
+<p>
+<p>selectWindow("MAX_mitosis-1-0001-1");//Select image 1
+<p>saveAs("tiff", dir+"Img_1.tif");//Save image into chosen directory by making a path combining the directory address with a new file name
+<p>close("Img_1.tif");//Close the image. NB it's name has changed, so this new name needs to be used to close it
+<p>
+<p>selectWindow("MAX_mitosis-1-0002");
+<p>//Add code to save and close this image
+<p>
+<p>selectWindow("MAX_mitosis-1-0003");
+<p>//Add code to save and close this image
+<p>
+<p>selectWindow("MAX_mitosis-1-0004");
+<p>//Add code to save and close this image</code></p><br>
+
