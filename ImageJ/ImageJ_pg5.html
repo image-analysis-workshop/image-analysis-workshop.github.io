@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!--
+    Plain-Academic by Vasilios Mavroudis
+    Released under the Simplified BSD License/FreeBSD (2-clause) License.
+    https://github.com/mavroudisv/plain-academic
+-->
+
+<html lang="en">
+<head>
+
+  <title>Image Analyisis workshop. University of Exeter, St. Luke's Campus, University of Exeter 2-16 of May 2023</title>
+    <link rel="icon" type="image/x-icon" href="./favi.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+
+<!-- Navigation -->
+	<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+	  <div class="container">
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		  <ul class="nav navbar-nav">
+				  <li><a href="../index.html">Home</a></li>
+				  <li><a href="../program.html">Programme</a></li>
+				  <li><a href="../imagej.html">Materials Image J</a></li> 
+				  <li><a href="../qupath.html">Materials QuPath</a></li>
+				  <li><a href="../speakers.html">Talks</a></li> 
+		  </ul>
+		</div>
+	  </div>
+	</nav>
+  
+  <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Entries Column -->
+            <div class="col-md-8" style="height: 100vh;">
+                
+                <!-- Main Image -->
+       
+                <h1> 5. Loops and conditions</h1>
+                <div style="margin-top:3%; text-align:justify;">                
+                <br>
+                <a href="../imagej.html">Home</a> | <a href="ImageJ_pg4.html"> << Previous Page</a> 
+                <br>
+
+                  <h2> Learning Objectives</h2>
+                  <ul>
+                    <li>If/else booleans</li>
+                    <li>Array data types</li>
+                    <li>Loops</li>
+                    
+                  </ul>
+
+                  <h2>if/else</h2>
+                  <p>if/else conditional statements enable the control of a program based on a yes/no question.</p>
+                  <p>There are several typical queries:</p>
+                      <ul><li>Equal to (==)</li>
+                        <li>Greater than (>)</li>
+                        <li>Less than (<)</li>
+                        <li>Greater than or equal to (>=)</li>
+                        <li>Less than or equal to (<=)</li>
+                        <li>Not equal to (!=)</li>
+                      </ul>
+                    <p>E.g.</p>
+                    <p><code>if (1>2){
+                      <p>print("one is greater than two")}
+                      <p>else{
+                      <p>print("One is not greater than two");
+                      <p>}</code></p></ul>
+                    <br>
+                    <b>Exercise 1:</b>
+                    <ol>
+                      <li><code>a=d2s(random*10,0);</code> will produce a random number between 0 and 10. 
+                        Write a statement to print the word "Big" if <code>a</code> is greater than 5, and "small" if it is less than or equal to 5. </li>
+                      <li>You can build statements upon each other to acheive greter complexity. 
+                        Can you modify your code so that a value equal to 5 will now print "Medium", while still printing "Big" and "small" for bigger and smaller values?</li>
+                      <ul><li>Look <a href="../docs/assets/Help pages/ImageJ/Page 5/If if else.html">here</a> for help</li></ul>
+                    </ol>
+
+                    <br>
+                    <h2>Arrays</h2>
+                    <p>Arrays are lists of values.</p>
+                    <p>These could include values from the column of a table, a list of file names, or anything you like.  </p>
+                    <p>It is often helpful to store data in this form so it can be iterated through or used to make a table.</p>
+                    <p>Values in a list can be called using their index position (which begins at 0).</p>
+                    <p>E.g.</p>
+                    <p><code>a=newArray(2,4,6,8);
+                      <p>print(a[0]);//Prints the first value in the array i.e. 2</code>
+                      <br>
+                      <br>
+                      <p><code>2</code></p>
+                    <br>
+                    <p>It is possible to perform a range of functions upon arrays, including concatenation (sticking arrays together) with <code>Array.concat(array1,array2);</code></li></p>
+                    <br>
+                    <b>Exercise 2:</b>
+                    <ol>
+                      <li>Make two arrays of values, assign these to variables</li>
+                      <li>Concatentate these together to make a new variable</li>
+                      <li>Put an array into a new table using the <code>Table.showArrays</code> function</li>                      
+                    </ol>
+                    <br>
+                    <h2>Loops</h2>
+                    <p>"For Loops" enable iteration through data.</li></p>
+                    <p>Below is an example of an array of numbers being looped through, and their values printed out in a string:</p>
+                  </ul>
+                    <p><code>a=newArray(1,3,5,9);//a new array of four numbers
+                    <p>for (i = 0; i < a.length; i++) {//a.length defines the number of iterations as the number of values in "a"
+                    <p>value=a[i];//i will range from 0-3, to get the values of a at each position must be extracted
+                    <p>print("Number "+value);//prints the value in a string
+                    <p>}</code></p>
+                    
+
+                  <br>
+                  <b>Exercise3:</b> 
+                  <p>Next we're going to write a script to loop through a set of images, segment the nuclei (channel 1) 
+                    and quantify the nuclear area. For assistance, see solution <a href="../docs/assets/Help pages/ImageJ/Page 5/Area macro.html">here</a>.</p>
+                  <p>It can be useful to experiment with small chunks of code separately, then gradually assemble into a bigger script.</p>
+                  <ol>
+                  <li>Use the <code>getDirectory("Choose Directory")</code> command to select the "Image Batch" directory in the downloaded course material. 
+                    Set the output of this to a variable e.g. <code>dir1</code>. </li>
+                  <li>Use <code>getFileList(dir1)</code> to make a list of the files. Set a variable to save this file list to.</li>
+                  <li>Create a loop to go through the file names iteratively.</li>
+                  <ul><li>It can be useful to just print out the file name to check things are working as you intend</li></ul>
+                  <li>With each iteration, open the image file. 
+                    <ul>
+                      <li>You'll need to join the directory and file name strings to form a complete path to the image</li>
+                      <li>Then open the image with <code>open(path)</code></li>
+                    </ul>
+                  <li>Next separate the channels with <code>run("Stack to Images");</code></li>
+                  <ul>
+                    <li>Before separating, it can be useful to first rename the image something general using e.g. <code>rename("Original");</code>
+                    Each of your images will have different names, but if they're renamed at the start then they can share code to
+                  find and manipulate them. </li>
+                  </ul>
+                  <li>Select the DAPI channel and segment (by thresholding etc, or Stardist works well with these images)</li>
+                  <li>Measure the area of each nucleus.</li> 
+                  <ul>
+                    <li>If you're using a binary mask, this can be done with "Set Measurements" and "Analyze Particles", 
+                      if using a labelmap you need Plugins > MorpholibJ > Analyze > Analyze Regions</li>
+                  </ul>
+                  <li>Measurements are outputted to a table. Extract these values as an array, using 
+                    <code>Table.getColumn(columnName)</code>, where your "columnname" is whatever it 
+                    appears as in the table</li>
+                  <li>Store these values in variable. </li>
+                  <li>Add an empty array <code>areas_array=newArray()</code> at the <b>start</b> of your script to which 
+                    you can concatenate the values for each image, so it can ultimately be added to a table of total results</li> 
+                  <li>Concatenate your values to the <code>areas_array</code> array</li>
+                  <li>Create an array for the Label values too, as with the Areas. This will allow youto record which areas relate to which cell</li>
+                  <li>It is also useful to know which image is being analysed. To do this you need to make another array 
+                    repeating the image name, which is the same length of as the recorded values so it can fill an appropriate number of rows in the ultimate results table.
+                  </li>
+                  <li>This requires another loop, repeatedly concatenating the name into an array.</li>
+                  <ul><mark>Note that as this is a loop within a loop, you must change the name of the variable used for iteration (e.g. from "i" to "j")</mark></ul>
+                  <li>Close images <code>close("*");</code></li>
+                  <li>Close tables <code>close("Label-Morphometry")</code>. NB. The title of this table may vary depending on your method used</li>
+                  <li>Once the loops are complete, compose a results table from the compiled array, using the <code>Table.showArrays</code> command. Look up associated infor for assistance. </li> 
+                  <br>
+
+
+                </ol>
+                  <br>
+                  <a href="../imagej.html">Home</a> | <a href="ImageJ_pg4.html"> << Previous Page</a> 
+
+
+
+
+
+                </div>
+            </div> 
+
+            <!-- Contact Info on the Sidebar -->
+            
+            <!-- Publications -->
+            
+        </div>
+
+
+    </div>
+    <!-- /.container -->
+    
+    
+</body>
+
+
+
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+    Plain-Academic by Vasilios Mavroudis
+    Released under the Simplified BSD License/FreeBSD (2-clause) License.
+    https://github.com/mavroudisv/plain-academic
+-->
+
+<html lang="en">
+<head>
+
+  <title>Image Analyisis workshop. University of Exeter, St. Luke's Campus, University of Exeter 2-16 of May 2023</title>
+    <link rel="icon" type="image/x-icon" href="./favi.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+
+
+<p> <code>  areas_array=newArray();//set up empty arrays for values from all images
+<p> label_array=newArray();
+<p> filename_array=newArray();</p></code>
+<br>
+<p> <code>dir1=getDirectory("Choose Directory");//Set source directory
+<p> files=getFileList(dir1);//list the files in the directory</code></p>
+<br>
+<p> <code>for (i = 0; i < files.length; i++) {//Create a loop with as many iterations as there are filenames
+<p> 	path=dir1+files[i];//joing file name and directory to make a complete path
+<p> 	open(path);//open file using the path
+<p> 	rename("Original");//rename to give uniform names to each open image 
+<p> 	run("Stack to Images");//Split the stack into individual images
+<p> 	selectWindow("Original-0001");//select channel 1 (DAPI)</code></p>
+<br>
+<p> <code>	//Segment with Stardist
+<p> 	run("Command From Macro", "command=[de.csbdresden.stardist.StarDist2D], args=['input':'Original-0001', 'modelChoice':'Versatile (fluorescent nuclei)', 'normalizeInput':'true', 'percentileBottom':'1.0', 'percentileTop':'99.8', 'probThresh':'0.5', 'nmsThresh':'0.4', 'outputType':'Both', 'nTiles':'1', 'excludeBoundary':'2', 'roiPosition':'Automatic', 'verbose':'false', 'showCsbdeepProgress':'false', 'showProbAndDist':'false'], process=[false]");
+</code></p>
+<br>
+<p> 	<code>run("Analyze Regions", "area");//Calculate areas
+<p> 	area=Table.getColumn("Area");//assign area values to variable
+<p> 	label=Table.getColumn("Label");//assign label values to variable</code></p>
+<br>
+<p> 	<code>//concatinate image variables to an an array for all the images
+<p>areas_array=Array.concat(areas_array,area);//concatinate image variables to an an array for all the images
+<p> 	label_array=Array.concat(label_array,label);</code></p>
+<br>
+<p> 	<code>for (j = 0; j < area.length; j++) {//loop adding image filename to the filename_array once for every label measured
+<p> 		filename_array=Array.concat(filename_array,files[i]);
+<p> 	}</code></p>
+<br>
+<p> <code>	close("Label-Morphometry");//close image results table
+<p> 	close("*");//close all images
+<p> 	}</code></p>
+<br>
+<p>  Table.showArrays("Areas_Table", filename_array, label_array, areas_array); //compose a results table with all the areas</code></p><br>
+<br>
+<br>

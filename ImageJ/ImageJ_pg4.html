@@ -58,7 +58,7 @@
                 <h1> 4. Quantitative measurements</h1>
                 <div style="margin-top:3%; text-align:justify;">                
                 <br>
-                <a href="../imagej.html">Home</a> | <a href="ImageJ_pg3.html"> << Previous Page</a> | <a> Next Page >></a> 
+                <a href="../imagej.html">Home</a> | <a href="ImageJ_pg3.html"> << Previous Page</a> | <a href="ImageJ_pg5.html"> Next Page >></a> 
                 <br>
 
                   <h2> Learning Objectives</h2>
@@ -159,13 +159,54 @@
                       <img src="../docs/assets/Images/ImageJ/Page 4/blobs- basic watershed.jpg" width="48%" />
                       <img src="../docs/assets/Images/ImageJ/Page 4/blobs- basic watershed AP result.jpg" width="48%" />
                     </p><br>
-    
+                    
+                <h3>Set Measurements</h3>
+                <br>
+                The measurements calculated in Analyze Particles are determined within "Set Measurements". 
+                <p></p>
                 <b>Exercise 3:</b> 
+                <ul>
+                  <li>Go to your downloaded material and open "DAPI.tif" from "Images"</li>
+                  <li>We are going to try to automate the following process, so keep the recorder open to help with this</l>
+                  <li>Threshold this image to try to segment the DAPI-stained nuclei</li>
+                  <li>Can you use any binary operations (e.g. watershedding) to optimise the segmentation?</li>
+                  <li>Modify the measurements in "Set Measurements" to calculate the centroid of each particle analysed</li>
+                      <br>
+                  <li>Try to write a macro to perform the entire segmentation task</li>
+                  <li>Click <a href="../docs/assets/Help pages/ImageJ/Page 4/Help automating thresholding 1.html" >here</a> for help with this</l>
+                    </ul>
 
+                <h3>Machine Learning</h3>
+                <br>
+                Impressive machine learning tools are being developed which can be very useful for bioimage segmentation.
+                <p>These include <a href=https://imagej.net/plugins/stardist>Stardist</a> and <a href="https://www.cellpose.org/">CellPose</a>. </p>
+                <p></p>
+                <b>Exercise 4:</b> 
+                <ul>
+                  <li>We're going to use Stardist to segment crowded nuclei.</l>
+                  <li>Necessary plugins must first be installed. </l>
+                  <li>Help > Update > Manage update sites </li>
+                    <ul><li>Select <b>CSB Deep</b> and <b>Stardist</b> (to perform segmentation)</li>
+                      <li>Select <b>SCF MPI CBG</b> and <b>IJPB-plugins</b> (for labelmap processing and analysis)</li>
+                      <li>Apply changes, then restart Fiji</li>
+                    </ul>
+                  <li>Open the same "DAPI.tif" image used previously</li>
+                  <li>Open Stardist (Plugins > Stardist > Stardist 2D)</li>
+                  <li>Run using default settings (brace yourself!)</li>
+                  <li>If you like, try segmenting traditionally for comparison.</li>
+                  <li>Stardist will work very well for somethings but not everything, so knowing the fundamentals is still valuable... for now.</li>
+                  <li>The output is a labelmap, not a binary image. This does not work with Analyze Particles.</li>
+                  <li>Alternatively use Plugins > MorpholibJ > Analyze > Analyze Regions</li>
+                  <li>If you wanted to look at signal intensties use Plugins > MorpholibJ > Analyze > Intensity Measurements 2D/3D</li>
+                  <li><mark><b>Note</b>. We haven't used the SCF MPI CBG plugin yet. This appears as "SCF" in Fiji, 
+                    and is very useful for creating and manipulating labelmaps, as well as adding more watershedding functions. </mark></li>
+                    </ul>
 
+    
+
+                    <br>
                   <br>
-                  <br>
-                  <a href="../imagej.html">Home</a> | <a href="ImageJ_pg3.html"> << Previous Page</a> | <a> Next Page >></a> 
+                  <a href="../imagej.html">Home</a> | <a href="ImageJ_pg3.html"> << Previous Page</a> | <a href="ImageJ_pg5.html"> Next Page >></a> 
 
 
 
