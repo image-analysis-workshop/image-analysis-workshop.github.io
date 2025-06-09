@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!--
+    Plain-Academic by Vasilios Mavroudis
+    Released under the Simplified BSD License/FreeBSD (2-clause) License.
+    https://github.com/mavroudisv/plain-academic
+-->
+
+<html lang="en">
+<head>
+  <title>Image Analyisis workshop. University of Exeter, St. Luke's Campus, 2025</title>
+    <link rel="icon" type="image/x-icon" href="./favi.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+ <style>
+   .blink {
+  animation: blink 3s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+    transform: scale(2);
+  }
+  51% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+ </style>
+  
+
+
+<!-- Navigation -->
+	<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+	  <div class="container">
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		  <ul class="nav navbar-nav">
+				  <li><a href="index.html">Home</a></li>
+				  <li><a href="program.html">Programme</a></li>
+				  <li><a href="imagej.html">Materials Image J</a></li> 
+				  <li><a href="qupath.html">Materials QuPath</a></li>
+				  <li><a href="qupath24.html">QuPath 2024</a></li> 
+		  </ul>
+		</div>
+	  </div>
+	</nav>
+  
+  <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Entries Column -->
+            <div class="col-md-8" style="height: 100vh;">
+                
+              <!-- Main Image -->
+	      <p align="right" style="font-familiy:verdana;font-size:15px"><<u> Basic Guide to QuPath</u>| <a href="qupath2.html"> Introduction to QuPath> </a></p>
+	    <hr>
+                <h1><strong><u>Introduction to QuPath</u></strong> </h1>
+		
+                <div style="margin-top:3%; text-align:justify;">
+		  <p style="text-align:left"> <strong> When: </strong>  29/11/2024, 13:00-16:00 </p>
+		  <p style="text-align:left"> <strong> Where: </strong>  South Cloisters 2.13, St Luke's Campus, University of Exeter </p>
+		  <p style="text-align:left"> <strong> Facilitator: </strong>  Nicolás Verschueren van Rees </p>
+		  
+		  <h3> Installation Notes </h3>
+		  <p> It is possible to install QuPath on any plataform. You need to download the software from the <a href="https://qupath.github.io/"> Official website</a> and follow the <a href="https://qupath.readthedocs.io/en/stable/docs/intro/installation.html"> Installation instructions </a>. After completing the instructions, open the program and try to open an image to make sure QuPath is installed properly. <br> Should you have any issues with the installation, please get in touch.<br>
+		    
+		    <h3>  Goals of this QuPath tutorial</strong><br/></h3>
+<p> After completing this tutorial, the participants should be able to: </p>
+		  <ul>
+		    <li>Load images, create projects, get familiar with the different concepts of QuPath</li>
+		    <li>rename channels, create classes and make annotations  </li>
+		    <li> Training a <span class="bolded"> Pixel Classifier</span> </li>
+		    <li> Run the cell detection algorithm</li>
+		    <li> Training a <span class="bolded"> cell classifier </span> </li>
+		    <li> Do simple scripts </li>
+		    <li> Export the relevant data </li>
+		    </ul>
+
+
+
+		  <h3> Resources </h3><br>
+		  <p> Here's a list of useful links to work with QuPath </p>
+		  <ul>
+		    <li><a href="https://qupath.readthedocs.io/en/stable/"> Official documentation, with nice tutorials</a> </li>
+		    <li><a href="https://www.imagescientist.com/image-analysis"> a collection of scripts for QuPath</a> </li>
+		    <li><a href="https://forum.image.sc/"> Image Analysis forum with answers to practically everything! </a></li>
+		    <li><a href="https://www.youtube.com/@QuPath"> QuPath's official youtube channel, including several tutorials </a></li>
+		    </ul>
+		    
+		  <h2> <strong><u> Tutorial</u> </strong> </h2>
+<!--		  <span class="blink" style="color:maroon"> Links to the <u>slides</u> will be included in <strong> this page</strong> before the session</span> -->
+		  <h3> Prerequisites </h3>
+
+
+<br>
+<p> Make sure you have the following before attending the tutorial </p>
+<ul>
+  <li> A computer with <em> QuPath </em> installed (see installation notes above)</li>
+  <li> Battery or charger. The tutorial will take at least two hours </li>
+  <li> <strong> Recommended</strong>: A mouse for the annotations</li>
+<!-- <li> A copy of the imageset in your hard drive. Link <strong><a href="http://www.google.com">here</a></strong>  </li> -->
+  <li> A copy of the imageset in your hard drive. Link <strong><a href="https://universityofexeteruk-my.sharepoint.com/:u:/g/personal/n_verschueren-van-rees_exeter_ac_uk/ETfC-nX1-j1GiDi90338f7YBgq7FfDzcF4n1Rl9oYMbeYA?e=9Ec99H">here</a></strong>  </li>
+</ul>
+
+<h3> Tutorial slides </h3>
+The slides of this tutorial are <strong> <u> <strong><a href="https://docs.google.com/presentation/d/15jUZ0AW0N1AnO6By1tQ_j7dVrvgSqJSlpL-6vJpV7sM/edit?usp=sharing">Here</a></strong> </u> </strong> 
+
+<!--The slides of this tutorial are <strong> <u> <strong><a href="http://www.google.com">Here</a></strong> </u> </strong> -->
+<br><br><br>
+
+
+	    <hr>
+	      <p align="right" style="font-familiy:verdana;font-size:15px"><<u> Basic Guide to QuPath</u>| <a href="qupath2.html"> Building on your QuPath knowledge> </a></p>
+                </div>
+            </div> 
+
+            <!-- Contact Info on the Sidebar -->
+            
+            <!-- Publications -->
+            
+        </div>
+
+
+    </div>
+    <!-- /.container -->
+    
+    <!-- Other people may like it too! -->
+    <a style="color:#b5bec9;font-size:0.8em; float:right;" href="https://github.com/mavroudisv/plain-academic">Plain Academic</a> 
+    
+</body>
+
+</html>
